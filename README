@@ -1,0 +1,18 @@
+0. In order the program to compile and run you need a correct setup. To get the right setup you need to source setup.sh
+	source setup.sh
+
+1. To quickly run the code ONLY to plot the geometry:
+	root -q -b lGarfield.C 'tpcGL.C+(0, "geoTest.root", "<your_geometry>")'
+	This will make two gif files. One for geometry another for the field.
+
+2. To run the jobs:
+	make sure you put right geometry in tpcGL.xml
+	star-submit tpcGL.xml
+
+3. There is also a DrawFlux() function defined in the code. You can run it on the files that you get after simulation to make ion leak histograms
+	a. Each job will give you one root file
+	b. I usually combine root files : hadd final.root *.root
+	c. root -l final.root
+	d. .x lGarfield.C
+	e. .L tpcGL.C+
+	f. DrawFlux()
