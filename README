@@ -5,11 +5,22 @@
 	root -q -b lGarfield.C 'tpcGL.C+(0, "geoTest.root", "<your_geometry>")'
 	This will make two gif files. One for geometry another for the field.
 
-2. To run the jobs:
+2. To run code interactively:
+	root -q -b lGarfield.C 'tpcGL.C+(50, "testOutputFile.root", "TPC")'
+	the above example will put 50 electrons and run the TPC geometry.
+
+3. To run the jobs:
 	make sure you put right geometry in tpcGL.xml
+	Here are some available geometries:
+	a. TPC <- regular TPC Geometry - Inner-Outer Region
+	b. TPC_II <- if you add II it will choose Inner-Inner region
+	c. TPC_OO <- if you add OO it will choose Outer-Outer region
+	d. during out chat one May 3, we added "noGG" mode that will remove the GG wires
+	
+	To submit the jobs:
 	star-submit tpcGL.xml
 
-3. There is also a DrawFlux() function defined in the code. You can run it on the files that you get after simulation to make ion leak histograms
+4. There is also a DrawFlux() function defined in the code. You can run it on the files that you get after simulation to make ion leak histograms
 	a. Each job will give you one root file
 	b. I usually combine root files : hadd final.root *.root
 	c. root -l final.root
