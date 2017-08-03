@@ -15,14 +15,16 @@
 	a. TPC <- regular TPC Geometry - Inner-Outer Region
 	b. TPC_II <- if you add II it will choose Inner-Inner region
 	c. TPC_OO <- if you add OO it will choose Outer-Outer region
-	d. during out chat one May 3, we added "noGG" mode that will remove the GG wires
+	d. The geometries can be combined, e.g. adding II (OO) at the end of user defined geometry will concentrate on II (OO) region of this geometry.
 	
 	To submit the jobs:
 	star-submit tpcGL.xml
 
+	Make sure the submission line in the xml file contains the right geometry
+
 4. There is also a DrawFlux() function defined in the code. You can run it on the files that you get after simulation to make ion leak histograms
 	a. Each job will give you one root file
-	b. I usually combine root files : hadd final.root *.root
+	b. It is usually a good idea to combine root files : hadd final.root *.root
 	c. root -l final.root
 	d. .x lGarfield.C
 	e. .L tpcGL.C+
